@@ -1,0 +1,50 @@
+use Drupal\Core\Database\Database;
+ 
+/**
+ * Implements hook_schema().
+ */
+function dn_accounts_schema(){
+    $schema['accounts'] = array(
+        'description' => 'The table for storing the accounts data.',
+        'fields' => array(
+            'id' => array(
+                'description' => 'The primary identifier for user',
+                'type' => 'int',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+            ),
+            'user_name' => array(
+                'description' => 'Full name',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+                'default' => '',
+            ),
+           'user_phone' => array(
+                'description' => 'Phone of user.',
+                'type' => 'varchar',
+                'length' => 10,
+                'not null' => TRUE,
+                'default' => '',
+            ),
+            'user_mail' => array(
+                'description' => 'Email of user',
+                'type' => 'varchar',
+                'length' => 255,
+                'default' => '',
+            ),            
+            'user_age' => array(
+                'description' => 'Age of user',
+                'type' => 'int',
+                'length' => 150,               
+            ),
+            'user_des' => array(
+                'description' => 'Description of user',
+                'type' => 'text',
+                'default' => '',
+            ),
+        ),
+        'primary key' => array('id'),
+    );
+    return $schema;
+}
